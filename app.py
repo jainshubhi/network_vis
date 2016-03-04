@@ -3,8 +3,10 @@ Network Vis Main App File
 '''
 
 import os
+import networkx
 
 from flask import Flask
+from flask import render_template
 from flask.ext.sqlalchemy import SQLAlchemy
 
 
@@ -18,7 +20,7 @@ from models import Graph
 ################################# Routes #######################################
 @app.route('/')
 def index():
-    return 'Hello Graph Vis!'
+    return render_template('index.html')
 
 @app.route('/<graph_name>')
 def load_graph(graph_name):

@@ -12,6 +12,7 @@ class Config(object):
     SECRET_KEY = os.environ['SECRET_KEY']
     # Database URL
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SQLALCHEMY_TRACK_MODIFICATIONS = True
 
 class ProductionConfig(Config):
     DEBUG = False
