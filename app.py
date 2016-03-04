@@ -7,6 +7,8 @@ import networkx
 
 from flask import Flask
 from flask import render_template
+from flask import url_for
+from flask import request
 from flask.ext.sqlalchemy import SQLAlchemy
 
 
@@ -18,8 +20,16 @@ db = SQLAlchemy(app)
 from models import Graph
 
 ################################# Routes #######################################
-@app.route('/')
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    if request.method == 'POST':
+        print "DATA DUDE"
+        print request.form
+        if 'links' in request.args:
+            print 'got here'
+            links = request.args['links']
+            print links
+            return HttpResponse('success')
     return render_template('index.html')
 
 @app.route('/<graph_name>')
