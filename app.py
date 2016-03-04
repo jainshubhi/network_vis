@@ -2,11 +2,17 @@
 Network Vis Main App File
 '''
 
+import os
+
 from flask import Flask
 
 
+################################# Config #######################################
 app = Flask(__name__)
+app.config.from_object(os.environ['APP_SETTINGS'])
 
+
+################################# Routes #######################################
 @app.route('/')
 def index():
     return 'Hello Graph Vis!'
